@@ -5,8 +5,6 @@ import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
 public class StringFormatter {
-	private final static int		FRACTION_DIGIT	= 2;
-
 	private static DecimalFormat	df_standart		= new DecimalFormat("#0.00",
 															DecimalFormatSymbols.getInstance(Locale.US));
 	private static DecimalFormat	df_extra		= new DecimalFormat("#0.00",
