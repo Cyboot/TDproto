@@ -16,6 +16,8 @@ public class Game {
 	}
 
 	public void render(final Graphics g) {
+		// GenericTower gt = new GenericTower(new Vector2d(30, 30));
+		// gt.render(g);
 	}
 
 
