@@ -5,7 +5,7 @@ import java.awt.Graphics;
 import net.tmt.td.util.Vector2d;
 
 public abstract class Entity {
-	protected Vector2d	pos;
+	protected Vector2d pos;
 
 	public Entity(final Vector2d initPos) {
 		pos = initPos;
@@ -16,4 +16,7 @@ public abstract class Entity {
 
 	public abstract void render(final Graphics g);
 
+	public Vector2d getPos() {
+		return pos;
+	}
 }
