@@ -19,7 +19,7 @@ public class ImageLoader {
 	public static void init() {
 		grass_1 = loadImage("grass_1.png");
 		grass_2 = loadImage("grass_2.png");
-		minion_1_ground = loadImage("minion_1_ground.jpg");
+		minion_1_ground = loadImage("minion_1_ground.png");
 		tower_cool = loadImage("tower_cool.png");
 		tower_damage = loadImage("tower_damage.png");
 		tower_fire = loadImage("tower_fire.png");
