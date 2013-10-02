@@ -37,7 +37,7 @@ public class DirectionPoint extends Entity {
 	@Override
 	public void render(final Graphics g) {
 		g.setColor(Color.orange);
-		g.drawOval(pos.x(), pos.y(), 1, 1);
+		g.drawOval(pos.x()-1, pos.y()-1, 2, 2);
 		g.drawOval(pos.x() - xOffsetRadius, pos.y() - yOffsetRadius, RADIUS,
 				RADIUS);
 
