@@ -12,11 +12,9 @@ public class CountdownTimer {
 		this.timer = starttimeleft;
 	}
 
-
 	public CountdownTimer(int timeleftIntervall) {
 		this(timeleftIntervall, timeleftIntervall);
 	}
-
 
 	public boolean isTimeleft() {
 		timer -= GameEngine.DELTA_TARGET;

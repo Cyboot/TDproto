@@ -8,13 +8,13 @@ import javax.imageio.ImageIO;
 import net.tmt.td.engine.GameEngine;
 
 public class ImageLoader {
-	public static BufferedImage minion_1_ground;
-	public static BufferedImage grass_1;
-	public static BufferedImage grass_2;
-	public static BufferedImage tower_cool;
-	public static BufferedImage tower_damage;
-	public static BufferedImage tower_fire;
-	public static BufferedImage tower_magic;
+	public static BufferedImage	minion_1_ground;
+	public static BufferedImage	grass_1;
+	public static BufferedImage	grass_2;
+	public static BufferedImage	tower_cool;
+	public static BufferedImage	tower_damage;
+	public static BufferedImage	tower_fire;
+	public static BufferedImage	tower_magic;
 
 	public static void init() {
 		grass_1 = loadImage("grass_1.png");

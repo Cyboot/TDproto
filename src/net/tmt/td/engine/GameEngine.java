@@ -15,14 +15,15 @@ import net.tmt.td.util.StringFormatter;
 
 @SuppressWarnings("serial")
 public class GameEngine extends Canvas {
-	public static final int DELTA_TARGET = 15;
+	public static final int	DELTA_TARGET			= 15;
 
-	private float cpuWorkload;
-	private String cpuWorkloadText = "";
-	private CountdownTimer timerCPUWorkloadText = new CountdownTimer(1000);
+	private float			cpuWorkload;
+	private String			cpuWorkloadText			= "";
+	private CountdownTimer	timerCPUWorkloadText	= new CountdownTimer(1000);
 
-	private Game game;
-//	private MapLvl1 map;
+	private Game			game;
+
+	// private MapLvl1 map;
 
 	public GameEngine() {
 		Dimension dim = new Dimension(Game.WIDTH - 10, Game.HEIGHT - 10);
@@ -39,7 +40,7 @@ public class GameEngine extends Canvas {
 		Game.init();
 		MapLvl1.init();
 		game = Game.getInstance();
-//		map = MapLvl1.getInstance();
+		// map = MapLvl1.getInstance();
 
 		final int DELTA_TARGET_NANOS = DELTA_TARGET * 1000 * 1000;
 
@@ -81,15 +82,15 @@ public class GameEngine extends Canvas {
 			cpuWorkloadText = getCPUWorkload();
 
 		game.tick();
-//		map.tick();
+		// map.tick();
 	}
 
 	private void render(final Graphics g) {
 		g.clearRect(0, 0, Game.WIDTH, Game.HEIGHT);
 
 		game.render(g);
-//		map.render(g);
-		
+		// map.render(g);
+
 		g.setColor(Color.yellow);
 		g.setFont(getFont());
 		g.drawString(cpuWorkloadText, Game.WIDTH - 30, 15);

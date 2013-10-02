@@ -19,6 +19,7 @@ public abstract class Tower extends Entity {
 
 	@Override
 	public void render(final Graphics g) {
-		g.drawImage(image, (int) (pos.x - (width / 2)), (int) (pos.y - (height / 2)), null);
+		g.drawImage(image, (int) (pos.x - (width / 2)),
+				(int) (pos.y - (height / 2)), null);
 	}
 }

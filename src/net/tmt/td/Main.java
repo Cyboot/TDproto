@@ -7,7 +7,6 @@ import javax.swing.JPanel;
 
 import net.tmt.td.engine.GameEngine;
 
-
 public class Main {
 	public static void main(final String[] args) {
 		GameEngine engine = new GameEngine();

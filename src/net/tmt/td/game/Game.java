@@ -13,11 +13,11 @@ import net.tmt.td.entity.GenericMinion;
 import net.tmt.td.entity.Minion1Ground;
 
 public class Game {
-	public final static int WIDTH = 1024;
-	public final static int HEIGHT = 640;
-	private static Game instance;
+	public final static int				WIDTH	= 1024;
+	public final static int				HEIGHT	= 640;
+	private static Game					instance;
 
-	public static List<GenericMinion> minions = null;
+	public static List<GenericMinion>	minions	= null;
 
 	private Game() {
 
