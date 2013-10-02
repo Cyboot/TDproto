@@ -1,23 +1,21 @@
 package net.tmt.td.game;
 
 import java.awt.Graphics;
-import java.awt.List;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import net.tmt.td.entity.GenericMinion;
 import net.tmt.td.entity.Minion1Ground;
 import net.tmt.td.util.DirectionPoint;
-import net.tmt.td.util.ImageLoader;
 import net.tmt.td.util.Vector2d;
 
 public class MapLvl1 {
 
-	private static MapLvl1 instance = null;
+	private static MapLvl1							instance		= null;
 
-	private static BufferedImage img;
-	public static java.util.List<DirectionPoint> directionPoints = null;
-	public static java.util.List<GenericMinion> minions = null;
+	private static BufferedImage					img;
+	public static java.util.List<DirectionPoint>	directionPoints	= null;
+	public static java.util.List<GenericMinion>		minions			= null;
 
 	private MapLvl1() {
 
@@ -34,11 +32,11 @@ public class MapLvl1 {
 
 		minions = new ArrayList<GenericMinion>();
 		for (int i = 0; i < 4; i++)
-			minions.add(new Minion1Ground(new Vector2d(50 + i*60, 50)));
+			minions.add(new Minion1Ground(new Vector2d(50 + i * 60, 50)));
 
 	}
 
-	public void render(Graphics g) {
+	public void render(final Graphics g) {
 		// g.drawImage...
 		for (GenericMinion gm : minions)
 			gm.render(g);
