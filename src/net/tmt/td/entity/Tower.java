@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 
 import net.tmt.td.util.Vector2d;
 
+//TODO: tower kosten coins ?
 public abstract class Tower extends Entity {
 
 	public static final int	WIDTH	= 40;

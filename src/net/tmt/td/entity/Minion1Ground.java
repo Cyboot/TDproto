@@ -32,7 +32,7 @@ public class Minion1Ground extends GenericMinion {
 		g.setColor(Color.orange);
 		g.drawRect(pos.x(), pos.y(), 1, 1);
 		g.drawRect(pos.x() - xOffsetImg, pos.y() - yOffsetImg, 40, 40);
-		// g.drawImage(img, pos.x() - xOffsetImg, pos.y() - yOffsetImg, null);
+		g.drawImage(img, pos.x() - xOffsetImg, pos.y() - yOffsetImg, null);
 	}
 
 }

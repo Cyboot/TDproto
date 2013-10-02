@@ -15,6 +15,7 @@ public class ImageLoader {
 	public static BufferedImage	tower_damage;
 	public static BufferedImage	tower_fire;
 	public static BufferedImage	tower_magic;
+	public static BufferedImage	endpoint_flag;
 
 	public static void init() {
 		grass_1 = loadImage("grass_1.png");
@@ -24,6 +25,7 @@ public class ImageLoader {
 		tower_damage = loadImage("tower_damage.png");
 		tower_fire = loadImage("tower_fire.png");
 		tower_magic = loadImage("tower_magic.png");
+		endpoint_flag = loadImage("endpoint_flag.png");
 	}
 
 	private static BufferedImage loadImage(final String img) {

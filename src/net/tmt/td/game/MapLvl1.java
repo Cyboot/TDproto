@@ -3,32 +3,44 @@ package net.tmt.td.game;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.List;
 
 import net.tmt.td.entity.DirectionPoint;
+import net.tmt.td.entity.Endpoint;
 import net.tmt.td.entity.GenericMinion;
 import net.tmt.td.entity.Minion1Ground;
 import net.tmt.td.util.Vector2d;
 
 public class MapLvl1 {
 
-	private static MapLvl1							instance		= null;
+	private static MapLvl1				instance		= null;
 
-	private static BufferedImage					img;
-	public static java.util.List<DirectionPoint>	directionPoints	= null;
-	public static java.util.List<GenericMinion>		minions			= null;
+	private static BufferedImage		img;
+	public static List<DirectionPoint>	directionPoints	= null;
+	public static List<GenericMinion>	minions			= null;
+	public static Endpoint				endpoint		= null;
 
 	private MapLvl1() {
 
-		// img = ImageLoader.getSubImage(img, x, y, width)
+		// img = ImageLoader.getSubImage(img, x, y, width) MAP
 		directionPoints = new ArrayList<>(4);
 		directionPoints.add(new DirectionPoint(new Vector2d(50, 50),
 				new Vector2d(1, 0)));
-		directionPoints.add(new DirectionPoint(new Vector2d(600, 50),
+		directionPoints.add(new DirectionPoint(new Vector2d(800, 50),
 				new Vector2d(0, 1)));
-		directionPoints.add(new DirectionPoint(new Vector2d(600, 450),
+		directionPoints.add(new DirectionPoint(new Vector2d(800, 350),
 				new Vector2d(-1, 0)));
-		directionPoints.add(new DirectionPoint(new Vector2d(50, 450),
+		directionPoints.add(new DirectionPoint(new Vector2d(500, 350),
 				new Vector2d(0, -1)));
+		directionPoints.add(new DirectionPoint(new Vector2d(500, 190),
+				new Vector2d(-1, 0)));
+		directionPoints.add(new DirectionPoint(new Vector2d(200, 190),
+				new Vector2d(0, 1)));
+		directionPoints.add(new DirectionPoint(new Vector2d(200, 450),
+				new Vector2d(1, 0)));
+
+		endpoint = new Endpoint(new Vector2d(800, 450));
+		// endpoint = new Endpoint(new Vector2d(500, 50));
 
 		minions = new ArrayList<GenericMinion>();
 		for (int i = 0; i < 7; i++)
@@ -40,11 +52,13 @@ public class MapLvl1 {
 	}
 
 	public void render(final Graphics g) {
-		// g.drawImage...
+		// g.drawMAP
 		for (DirectionPoint dp : directionPoints)
 			dp.render(g);
 		for (GenericMinion gm : minions)
 			gm.render(g);
+
+		endpoint.render(g);
 	}
 
 	public void tick() {
@@ -52,8 +66,15 @@ public class MapLvl1 {
 		for (DirectionPoint dp : directionPoints)
 			dp.tick();
 
-		for (GenericMinion gm : minions)
-			gm.tick();
+		for (int i = 0; i < minions.size(); i++) {
+			GenericMinion gm = minions.get(i);
+			if (gm.isAlive())
+				gm.tick();
+			else
+				minions.remove(i);
+		}
+
+		endpoint.tick();
 	}
 
 	public static MapLvl1 getInstance() {
