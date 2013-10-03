@@ -43,9 +43,17 @@ public class Vector2d {
 		return (int) y;
 	}
 
+	public void setLength(final double newLen) {
+		int xFac = (x >= 0 ? 1 : -1);
+		int yFac = (y >= 0 ? 1 : -1);
+		double len = Math.sqrt(x * x + y * y);
+		double alpha = Math.asin(Math.abs(x) / len);
+		x = Math.sin(alpha) * newLen * xFac;
+		y = Math.cos(alpha) * newLen * yFac;
+	}
+
 	@Override
 	public String toString() {
-		return "(" + StringFormatter.format(x, 4, 2) + " : "
-				+ StringFormatter.format(y, 4, 2) + ")";
+		return "(" + StringFormatter.format(x, 4, 2) + " : " + StringFormatter.format(y, 4, 2) + ")";
 	}
 }

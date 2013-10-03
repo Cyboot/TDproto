@@ -10,6 +10,7 @@ import net.tmt.td.entity.Endpoint;
 import net.tmt.td.entity.GenericMinion;
 import net.tmt.td.entity.Minion1Ground;
 import net.tmt.td.entity.Path;
+import net.tmt.td.entity.Shot;
 import net.tmt.td.util.CountdownTimer;
 import net.tmt.td.util.Vector2d;
 
@@ -21,33 +22,26 @@ public class MapLvl1 {
 	public static List<DirectionPoint>	directionPoints	= null;
 	public static List<GenericMinion>	minions			= null;
 	public static Endpoint				endpoint		= null;
-	private Path	path;
+	private Path						path;
 
-	private CountdownTimer	timerSpawnEnemy;
+	private CountdownTimer				timerSpawnEnemy;
 
 	private MapLvl1() {
 		timerSpawnEnemy = new CountdownTimer(1000);
 
 		// img = ImageLoader.getSubImage(img, x, y, width) MAP
 		directionPoints = new ArrayList<>(4);
-		directionPoints.add(new DirectionPoint(new Vector2d(50, 50),
-				new Vector2d(1, 0)));
-		directionPoints.add(new DirectionPoint(new Vector2d(800, 50),
-				new Vector2d(0, 1)));
-		directionPoints.add(new DirectionPoint(new Vector2d(800, 350),
-				new Vector2d(-1, 0)));
-		directionPoints.add(new DirectionPoint(new Vector2d(500, 350),
-				new Vector2d(0, -1)));
-		directionPoints.add(new DirectionPoint(new Vector2d(500, 190),
-				new Vector2d(-1, 0)));
-		directionPoints.add(new DirectionPoint(new Vector2d(200, 190),
-				new Vector2d(0, 1)));
-		directionPoints.add(new DirectionPoint(new Vector2d(200, 450),
-				new Vector2d(1, 0)));
+		directionPoints.add(new DirectionPoint(new Vector2d(50, 50), new Vector2d(1, 0)));
+		directionPoints.add(new DirectionPoint(new Vector2d(800, 50), new Vector2d(0, 1)));
+		directionPoints.add(new DirectionPoint(new Vector2d(800, 350), new Vector2d(-1, 0)));
+		directionPoints.add(new DirectionPoint(new Vector2d(500, 350), new Vector2d(0, -1)));
+		directionPoints.add(new DirectionPoint(new Vector2d(500, 190), new Vector2d(-1, 0)));
+		directionPoints.add(new DirectionPoint(new Vector2d(200, 190), new Vector2d(0, 1)));
+		directionPoints.add(new DirectionPoint(new Vector2d(200, 450), new Vector2d(1, 0)));
 
 		endpoint = new Endpoint(new Vector2d(800, 450));
 		// endpoint = new Endpoint(new Vector2d(500, 50));
-		
+
 		path = new Path(directionPoints, endpoint);
 
 		minions = new ArrayList<GenericMinion>();
@@ -71,17 +65,23 @@ public class MapLvl1 {
 	}
 
 	public void tick() {
-		if(timerSpawnEnemy.isTimeleft())
+		if (timerSpawnEnemy.isTimeleft())
 			minions.add(new Minion1Ground(new Vector2d(50, 50)));
-		
+
 
 		for (DirectionPoint dp : directionPoints)
 			dp.tick();
 
 		for (int i = 0; i < minions.size(); i++) {
 			GenericMinion gm = minions.get(i);
+			ArrayList<Shot> shots = Game.getInstance().getShots();
+			for (Shot s : shots) {
+				if (gm.getPos().distance(s.getPos()) < 1) {
+					s.hit();
+				}
+			}
 			if (gm.isAlive())
-				gm.tick();
+				gm.tick(); // TODO: does this do anything?
 			else
 				minions.remove(i);
 		}

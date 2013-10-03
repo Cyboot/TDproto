@@ -38,6 +38,10 @@ public abstract class GenericMinion extends Entity {
 		return directionVector;
 	}
 
+	public void looseHealth(final int damage) {
+		health -= damage;
+	}
+
 	public void attackPlayer() {
 		Player.getInstance().changeHealthValueTo(damage * -1);
 	}
@@ -50,4 +54,9 @@ public abstract class GenericMinion extends Entity {
 		return isAlive;
 	}
 
+	@Override
+	public void tick() {
+		if (health < 0)
+			isAlive = false;
+	}
 }
