@@ -12,15 +12,15 @@ import net.tmt.td.util.Vector2d;
 // klingt vernünftig, ja. Wer ich so implementieren
 
 public abstract class Tower extends Entity {
-	private static final int ATTACK_RADIUS = 200;
-	public static final int		WIDTH		= 40;
-	public static final int		HEIGHT		= 85;
-	public static final int		DAMAGE		= 5;
-	protected int				width		= Tower.WIDTH;
-	protected int				height		= Tower.HEIGHT;
-	protected int				damage		= Tower.DAMAGE;
-	protected BufferedImage		image		= null;
-	protected CountdownTimer	cooldown	= new CountdownTimer(100);
+	private static final int	ATTACK_RADIUS	= 200;
+	public static final int		WIDTH			= 40;
+	public static final int		HEIGHT			= 85;
+	public static final int		DAMAGE			= 5;
+	protected int				width			= Tower.WIDTH;
+	protected int				height			= Tower.HEIGHT;
+	protected int				damage			= Tower.DAMAGE;
+	protected BufferedImage		image			= null;
+	protected CountdownTimer	cooldown		= new CountdownTimer(100);
 
 	public Tower(final Vector2d initPos) {
 		super(initPos);
@@ -46,8 +46,8 @@ public abstract class Tower extends Entity {
 					target = gm;
 				}
 			}
-			//only shoot if there is a minion as target
-			if(target != null)
+			// only shoot if there is a minion as target
+			if (target != null)
 				Game.getInstance().registerShot(this, target);
 		}
 	}

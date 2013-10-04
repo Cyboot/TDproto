@@ -32,18 +32,15 @@ public class ImageLoader {
 		try {
 			return ImageIO.read(GameEngine.class.getResource("/" + img));
 		} catch (IOException e) {
-			throw new IllegalArgumentException(
-					"The Image you tried to load was not found!", e);
+			throw new IllegalArgumentException("The Image you tried to load was not found!", e);
 		}
 	}
 
-	public static BufferedImage getSubImage(final BufferedImage img,
-			final int x, final int y, final int width) {
+	public static BufferedImage getSubImage(final BufferedImage img, final int x, final int y, final int width) {
 		return img.getSubimage(x * width, y * width, width, width);
 	}
 
-	public static BufferedImage getCutImage(final BufferedImage img,
-			final int width) {
+	public static BufferedImage getCutImage(final BufferedImage img, final int width) {
 		return img.getSubimage(0, 0, width, img.getHeight());
 	}
 }

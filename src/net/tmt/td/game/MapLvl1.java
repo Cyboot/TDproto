@@ -10,7 +10,6 @@ import net.tmt.td.entity.Endpoint;
 import net.tmt.td.entity.GenericMinion;
 import net.tmt.td.entity.Minion1Ground;
 import net.tmt.td.entity.Path;
-import net.tmt.td.entity.Shot;
 import net.tmt.td.util.CountdownTimer;
 import net.tmt.td.util.Vector2d;
 
@@ -27,7 +26,7 @@ public class MapLvl1 {
 	private CountdownTimer				timerSpawnEnemy;
 
 	private MapLvl1() {
-		timerSpawnEnemy = new CountdownTimer(1000,0);
+		timerSpawnEnemy = new CountdownTimer(1000, 0);
 
 		// img = ImageLoader.getSubImage(img, x, y, width) MAP
 		directionPoints = new ArrayList<>(4);
@@ -68,13 +67,13 @@ public class MapLvl1 {
 
 		for (int i = 0; i < minions.size(); i++) {
 			GenericMinion gm = minions.get(i);
-//			ArrayList<Shot> shots = Game.getInstance().getShots();
-//			for (Shot s : shots) {
-//				if (gm.getPos().distance(s.getPos()) < 1) {
-//					s.hit();
-//				}
-//			}
-			
+			// ArrayList<Shot> shots = Game.getInstance().getShots();
+			// for (Shot s : shots) {
+			// if (gm.getPos().distance(s.getPos()) < 1) {
+			// s.hit();
+			// }
+			// }
+
 			if (gm.isAlive())
 				gm.tick(); // TODO: does this do anything?
 			else
