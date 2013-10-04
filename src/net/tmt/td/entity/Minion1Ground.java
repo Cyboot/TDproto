@@ -29,10 +29,12 @@ public class Minion1Ground extends GenericMinion {
 
 	@Override
 	public void render(final Graphics g) {
+		super.render(g);
 		g.setColor(Color.orange);
-		g.drawRect(pos.x(), pos.y(), 1, 1);
-		g.drawRect(pos.x() - xOffsetImg, pos.y() - yOffsetImg, 40, 40);
+//		g.drawRect(pos.x(), pos.y(), 1, 1);
+//		g.drawRect(pos.x() - xOffsetImg, pos.y() - yOffsetImg, 40, 40);
 		g.drawImage(img, pos.x() - xOffsetImg, pos.y() - yOffsetImg, null);
+	
 	}
 
 }

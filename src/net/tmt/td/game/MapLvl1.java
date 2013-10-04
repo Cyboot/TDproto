@@ -27,7 +27,7 @@ public class MapLvl1 {
 	private CountdownTimer				timerSpawnEnemy;
 
 	private MapLvl1() {
-		timerSpawnEnemy = new CountdownTimer(1000);
+		timerSpawnEnemy = new CountdownTimer(1000,0);
 
 		// img = ImageLoader.getSubImage(img, x, y, width) MAP
 		directionPoints = new ArrayList<>(4);
@@ -45,12 +45,6 @@ public class MapLvl1 {
 		path = new Path(directionPoints, endpoint);
 
 		minions = new ArrayList<GenericMinion>();
-		for (int i = 0; i < 2; i++)
-			minions.add(new Minion1Ground(new Vector2d(50 + i * 5, 50)));
-
-		for (int i = 0; i < 2; i++)
-			minions.add(new Minion1Ground(new Vector2d(40 + i * 5, 70)));
-
 	}
 
 	public void render(final Graphics g) {
@@ -74,12 +68,13 @@ public class MapLvl1 {
 
 		for (int i = 0; i < minions.size(); i++) {
 			GenericMinion gm = minions.get(i);
-			ArrayList<Shot> shots = Game.getInstance().getShots();
-			for (Shot s : shots) {
-				if (gm.getPos().distance(s.getPos()) < 1) {
-					s.hit();
-				}
-			}
+//			ArrayList<Shot> shots = Game.getInstance().getShots();
+//			for (Shot s : shots) {
+//				if (gm.getPos().distance(s.getPos()) < 1) {
+//					s.hit();
+//				}
+//			}
+			
 			if (gm.isAlive())
 				gm.tick(); // TODO: does this do anything?
 			else

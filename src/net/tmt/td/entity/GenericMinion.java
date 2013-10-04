@@ -1,5 +1,8 @@
 package net.tmt.td.entity;
 
+import java.awt.Color;
+import java.awt.Graphics;
+
 import net.tmt.td.game.Player;
 import net.tmt.td.util.Vector2d;
 
@@ -54,6 +57,21 @@ public abstract class GenericMinion extends Entity {
 		return isAlive;
 	}
 
+	@Override
+	public void render(Graphics g) {
+		//draw health bar
+		int maxwidth = 35;
+		int offsetX = pos.x()-maxwidth/2;
+		int offsetY = pos.y()-25;
+		int height = 4;
+		
+		g.setColor(Color.red);
+		g.fillRect(offsetX, offsetY, maxwidth, height);
+
+		g.setColor(Color.green);
+		g.fillRect(offsetX, offsetY, (int) (health/100f*maxwidth), height);
+	}
+	
 	@Override
 	public void tick() {
 		if (health < 0)
