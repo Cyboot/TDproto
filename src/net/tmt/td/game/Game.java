@@ -20,7 +20,9 @@ public class Game {
 	ArrayList<Shot>			shots	= new ArrayList<Shot>();
 	List<GenericMinion>		mobs	= new ArrayList<GenericMinion>();
 
+
 	private Game() {
+
 		towers.add(new DamageTower(new Vector2d(125, 185)));
 	}
 
@@ -33,8 +35,10 @@ public class Game {
 	}
 
 	public void tick() {
+		// TODO: Map als Attribut
 		MapLvl1.getInstance().tick();
-		mobs = MapLvl1.getInstance().getMinions();
+		for (GenericMinion gm : mobs)
+			gm.tick();
 		for (Tower t : towers) {
 			t.shoot(mobs);
 		}
@@ -46,6 +50,11 @@ public class Game {
 
 
 	public void render(final Graphics g) {
+		MapLvl1.getInstance().render(g);
+
+		for (GenericMinion gm : mobs)
+			gm.render(g);
+
 		for (Tower t : towers) {
 			t.render(g);
 		}
@@ -53,7 +62,6 @@ public class Game {
 			if (s.isAlive())
 				s.render(g);
 		}
-		MapLvl1.getInstance().render(g);
 		drawMenu(g);
 	}
 
@@ -82,5 +90,13 @@ public class Game {
 
 		g.drawString("Coins:  " + Integer.toString(Player.getInstance().getCoins()), (int) menuPos.x + 280,
 				(int) menuPos.y + 20);
+	}
+
+	public void addMob(final GenericMinion gm) {
+		mobs.add(gm);
+	}
+
+	public List<GenericMinion> getMobs() {
+		return mobs;
 	}
 }
