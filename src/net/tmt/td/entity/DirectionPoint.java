@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.List;
 
-import net.tmt.td.game.MapLvl1;
+import net.tmt.td.game.Game;
 import net.tmt.td.util.Vector2d;
 
 public class DirectionPoint extends Entity {
@@ -25,7 +25,7 @@ public class DirectionPoint extends Entity {
 
 	@Override
 	public void tick() {
-		minions = MapLvl1.getInstance().getMinions();
+		minions = Game.getInstance().getMobs();
 		for (GenericMinion gm : minions) {
 			if (pos.distance(gm.getPos()) < RADIUS) {
 				gm.setDirection(direction);
