@@ -20,9 +20,7 @@ public class Game {
 	ArrayList<Shot>			shots	= new ArrayList<Shot>();
 	List<GenericMinion>		mobs	= new ArrayList<GenericMinion>();
 
-
 	private Game() {
-
 		towers.add(new DamageTower(new Vector2d(125, 185)));
 	}
 
@@ -35,8 +33,14 @@ public class Game {
 	}
 
 	public void tick() {
-		// TODO: Map als Attribut
-		MapLvl1.getInstance().tick();
+
+		// TODO: wenn alle levels geschafft sind ?
+
+		if (Map.getInstance().getMobStack().size() == 0 && mobs.size() == 0 && Player.getInstance().getHealth() > 0) {
+			Map.getInstance().setUpNewLevel();
+		}
+
+		Map.getInstance().tick();
 
 		for (int i = 0; i < mobs.size(); i++) {
 			GenericMinion gm = mobs.get(i);
@@ -57,7 +61,7 @@ public class Game {
 
 
 	public void render(final Graphics g) {
-		MapLvl1.getInstance().render(g);
+		Map.getInstance().render(g);
 
 		for (GenericMinion gm : mobs)
 			gm.render(g);

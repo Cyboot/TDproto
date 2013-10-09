@@ -8,7 +8,7 @@ import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
 
 import net.tmt.td.game.Game;
-import net.tmt.td.game.MapLvl1;
+import net.tmt.td.game.Map;
 import net.tmt.td.game.Player;
 import net.tmt.td.util.CountdownTimer;
 import net.tmt.td.util.ImageLoader;
@@ -24,7 +24,6 @@ public class GameEngine extends Canvas {
 
 	private Game			game;
 
-	// private MapLvl1 map;
 
 	public GameEngine() {
 		Dimension dim = new Dimension(Game.WIDTH - 10, Game.HEIGHT - 10);
@@ -39,7 +38,7 @@ public class GameEngine extends Canvas {
 	public void start() {
 		ImageLoader.init();
 		Game.init();
-		MapLvl1.init();
+		Map.init();
 		Player.init();
 		game = Game.getInstance();
 
