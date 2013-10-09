@@ -37,8 +37,15 @@ public class Game {
 	public void tick() {
 		// TODO: Map als Attribut
 		MapLvl1.getInstance().tick();
-		for (GenericMinion gm : mobs)
-			gm.tick();
+
+		for (int i = 0; i < mobs.size(); i++) {
+			GenericMinion gm = mobs.get(i);
+			if (gm.isAlive())
+				gm.tick();
+			else
+				mobs.remove(i);
+		}
+
 		for (Tower t : towers) {
 			t.shoot(mobs);
 		}
